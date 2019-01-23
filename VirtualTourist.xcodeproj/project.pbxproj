@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE19EA2C21F65E8900583EF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA2B21F65E8900583EF8 /* AppDelegate.swift */; };
-		FE19EA2E21F65E8900583EF8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA2D21F65E8900583EF8 /* ViewController.swift */; };
+		FE19EA2E21F65E8900583EF8 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA2D21F65E8900583EF8 /* MapViewController.swift */; };
 		FE19EA3121F65E8900583EF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE19EA2F21F65E8900583EF8 /* Main.storyboard */; };
 		FE19EA3321F65E8B00583EF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE19EA3221F65E8B00583EF8 /* Assets.xcassets */; };
 		FE19EA3621F65E8B00583EF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE19EA3421F65E8B00583EF8 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		FE19EA2821F65E8900583EF8 /* VirtualTourist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualTourist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE19EA2B21F65E8900583EF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FE19EA2D21F65E8900583EF8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FE19EA2D21F65E8900583EF8 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		FE19EA3021F65E8900583EF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE19EA3221F65E8B00583EF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE19EA3521F65E8B00583EF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -54,14 +54,78 @@
 		FE19EA2A21F65E8900583EF8 /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				FE19EA4B21F781B700583EF8 /* Supporting Files */,
+				FE19EA4A21F77A4400583EF8 /* Stores */,
+				FE19EA4921F77A2000583EF8 /* Helpers */,
+				FE19EA4721F779FE00583EF8 /* CoreData */,
+				FE19EA3F21F660BD00583EF8 /* Controllers */,
+				FE19EA3E21F660B700583EF8 /* Views */,
+				FE19EA3D21F660B100583EF8 /* Models */,
 				FE19EA2B21F65E8900583EF8 /* AppDelegate.swift */,
-				FE19EA2D21F65E8900583EF8 /* ViewController.swift */,
-				FE19EA2F21F65E8900583EF8 /* Main.storyboard */,
 				FE19EA3221F65E8B00583EF8 /* Assets.xcassets */,
-				FE19EA3421F65E8B00583EF8 /* LaunchScreen.storyboard */,
-				FE19EA3721F65E8B00583EF8 /* Info.plist */,
 			);
 			path = VirtualTourist;
+			sourceTree = "<group>";
+		};
+		FE19EA3D21F660B100583EF8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FE19EA3E21F660B700583EF8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FE19EA3F21F660BD00583EF8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE19EA4E21F7D28E00583EF8 /* Map */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FE19EA4721F779FE00583EF8 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		FE19EA4921F77A2000583EF8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FE19EA4A21F77A4400583EF8 /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				FE19EA2F21F65E8900583EF8 /* Main.storyboard */,
+				FE19EA3421F65E8B00583EF8 /* LaunchScreen.storyboard */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		FE19EA4B21F781B700583EF8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FE19EA3721F65E8B00583EF8 /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FE19EA4E21F7D28E00583EF8 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				FE19EA2D21F65E8900583EF8 /* MapViewController.swift */,
+			);
+			path = Map;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,7 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE19EA2E21F65E8900583EF8 /* ViewController.swift in Sources */,
+				FE19EA2E21F65E8900583EF8 /* MapViewController.swift in Sources */,
 				FE19EA2C21F65E8900583EF8 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,7 +348,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3TBYKSQUS6;
-				INFOPLIST_FILE = VirtualTourist/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/VirtualTourist/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -292,7 +356,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.course.matheus.lima.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -302,7 +366,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3TBYKSQUS6;
-				INFOPLIST_FILE = VirtualTourist/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/VirtualTourist/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +374,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.course.matheus.lima.VirtualTourist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
