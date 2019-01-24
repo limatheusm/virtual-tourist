@@ -14,6 +14,7 @@
 		FE19EA3621F65E8B00583EF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE19EA3421F65E8B00583EF8 /* LaunchScreen.storyboard */; };
 		FE19EA8E21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA8C21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld */; };
 		FE19EA9021F8C97800583EF8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA8F21F8C97800583EF8 /* CoreDataStack.swift */; };
+		FE19EA9521FA1A7200583EF8 /* Location+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA9421FA1A7200583EF8 /* Location+MKAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		FE19EA3721F65E8B00583EF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE19EA8D21F8C7B200583EF8 /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
 		FE19EA8F21F8C97800583EF8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		FE19EA9421FA1A7200583EF8 /* Location+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+MKAnnotation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 		FE19EA4721F779FE00583EF8 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				FE19EA9121FA1A3C00583EF8 /* Managed Object Extensions */,
 				FE19EA8C21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld */,
 				FE19EA8F21F8C97800583EF8 /* CoreDataStack.swift */,
 			);
@@ -132,6 +135,14 @@
 				FE19EA2D21F65E8900583EF8 /* MapViewController.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		FE19EA9121FA1A3C00583EF8 /* Managed Object Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FE19EA9421FA1A7200583EF8 /* Location+MKAnnotation.swift */,
+			);
+			path = "Managed Object Extensions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -208,6 +219,7 @@
 				FE19EA2E21F65E8900583EF8 /* MapViewController.swift in Sources */,
 				FE19EA2C21F65E8900583EF8 /* AppDelegate.swift in Sources */,
 				FE19EA8E21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld in Sources */,
+				FE19EA9521FA1A7200583EF8 /* Location+MKAnnotation.swift in Sources */,
 				FE19EA9021F8C97800583EF8 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

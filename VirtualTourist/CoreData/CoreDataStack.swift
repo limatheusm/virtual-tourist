@@ -17,7 +17,7 @@ final class CoreDataStack {
     
     // Mark: - Properties
     
-    let persistentContainer: NSPersistentContainer
+    private let persistentContainer: NSPersistentContainer
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
@@ -39,15 +39,29 @@ final class CoreDataStack {
     
     // MARK: - Core Data Saving Support
     
-    func saveViewContext(errorHandler: ((_ error: Error) -> Void)? = nil) {
-        if viewContext.hasChanges {
-            do {
-                try viewContext.save()
-            } catch {
-                errorHandler?(error)
-                print(error.localizedDescription)
+    func saveViewContext(errorHandler: ((_ error: Error?) -> Void)? = nil) {
+        viewContext.perform {
+            if self.viewContext.hasChanges {
+                do {
+                    try self.viewContext.save()
+                    errorHandler?(nil)
+                } catch {
+                    errorHandler?(error)
+                    print(error.localizedDescription)
+                }
             }
         }
     }
     
+    // MARK: - Perform methods
+    
+    func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        persistentContainer.performBackgroundTask(block)
+    }
+    
+    func performViewTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
+        persistentContainer.viewContext.perform {
+            block(self.persistentContainer.viewContext)
+        }
+    }
 }
