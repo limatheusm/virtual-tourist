@@ -12,6 +12,8 @@
 		FE19EA3121F65E8900583EF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE19EA2F21F65E8900583EF8 /* Main.storyboard */; };
 		FE19EA3321F65E8B00583EF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE19EA3221F65E8B00583EF8 /* Assets.xcassets */; };
 		FE19EA3621F65E8B00583EF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE19EA3421F65E8B00583EF8 /* LaunchScreen.storyboard */; };
+		FE19EA8E21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA8C21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld */; };
+		FE19EA9021F8C97800583EF8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA8F21F8C97800583EF8 /* CoreDataStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		FE19EA3221F65E8B00583EF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE19EA3521F65E8B00583EF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE19EA3721F65E8B00583EF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE19EA8D21F8C7B200583EF8 /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
+		FE19EA8F21F8C97800583EF8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 		FE19EA4721F779FE00583EF8 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				FE19EA8C21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld */,
+				FE19EA8F21F8C97800583EF8 /* CoreDataStack.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -201,6 +207,8 @@
 			files = (
 				FE19EA2E21F65E8900583EF8 /* MapViewController.swift in Sources */,
 				FE19EA2C21F65E8900583EF8 /* AppDelegate.swift in Sources */,
+				FE19EA8E21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld in Sources */,
+				FE19EA9021F8C97800583EF8 /* CoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +408,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FE19EA8C21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FE19EA8D21F8C7B200583EF8 /* VirtualTourist.xcdatamodel */,
+			);
+			currentVersion = FE19EA8D21F8C7B200583EF8 /* VirtualTourist.xcdatamodel */;
+			path = VirtualTourist.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FE19EA2021F65E8800583EF8 /* Project object */;
 }
