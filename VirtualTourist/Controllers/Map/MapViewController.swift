@@ -151,6 +151,15 @@ extension MapViewController: MKMapViewDelegate {
         }
         
         // TODO: Navigate to image list view
+        
+        FlickrApiManager.sharedInstance.getPhotos(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude) { (result) in
+            switch result {
+            case .failure(let errorMessage):
+                print(errorMessage)
+            case .success(let photos):
+                print(photos.count)
+            }
+        }
     }
 }
 
