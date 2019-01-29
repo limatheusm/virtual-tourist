@@ -13,6 +13,7 @@
         <!--Virtual Tourist-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController id="BYZ-38-t0r" customClass="MapViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -56,9 +57,39 @@
                         <outlet property="mapView" destination="Gmh-zm-aQx" id="Lu6-ON-XJp"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="133.5832083958021"/>
+        </scene>
+        <!--Location Details View Controller-->
+        <scene sceneID="glW-GX-da8">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZmK-vn-B7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="LocationDetails" id="gMJ-wF-D2w" customClass="LocationDetailsViewController" customModule="VirtualTourist" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h3U-oW-5zy">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="T4j-3p-wFh">
+                                <rect key="frame" x="0.0" y="20" width="375" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Kr4-nu-ama"/>
+                                </constraints>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="T4j-3p-wFh" firstAttribute="top" secondItem="M0Y-uW-TPQ" secondAttribute="top" id="QFB-fa-92s"/>
+                            <constraint firstItem="T4j-3p-wFh" firstAttribute="trailing" secondItem="M0Y-uW-TPQ" secondAttribute="trailing" id="oJ5-8g-5nO"/>
+                            <constraint firstItem="T4j-3p-wFh" firstAttribute="leading" secondItem="M0Y-uW-TPQ" secondAttribute="leading" id="yaq-nz-tpl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M0Y-uW-TPQ"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="T4j-3p-wFh" id="TQt-2s-0wc"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1848.8" y="133.5832083958021"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BN2-eY-03t">

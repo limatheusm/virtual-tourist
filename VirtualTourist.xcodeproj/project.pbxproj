@@ -15,8 +15,6 @@
 		FE19EA8E21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA8C21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld */; };
 		FE19EA9021F8C97800583EF8 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA8F21F8C97800583EF8 /* CoreDataStack.swift */; };
 		FE19EA9521FA1A7200583EF8 /* Location+MKAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA9421FA1A7200583EF8 /* Location+MKAnnotation.swift */; };
-		FE19EA9821FB989300583EF8 /* FlickrClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA9721FB989300583EF8 /* FlickrClient.swift */; };
-		FE19EA9C21FBCCF700583EF8 /* FlickrConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EA9B21FBCCF700583EF8 /* FlickrConvenience.swift */; };
 		FE19EAA921FCBA6F00583EF8 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EAA821FCBA6F00583EF8 /* EndPointType.swift */; };
 		FE19EAAB21FCBB4B00583EF8 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EAAA21FCBB4B00583EF8 /* HTTPMethod.swift */; };
 		FE19EAAD21FCBC0000583EF8 /* HTTPTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EAAC21FCBC0000583EF8 /* HTTPTask.swift */; };
@@ -30,6 +28,7 @@
 		FE19EABE21FCFB1F00583EF8 /* FlickrConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EABD21FCFB1F00583EF8 /* FlickrConstants.swift */; };
 		FE19EAC021FD01ED00583EF8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EABF21FD01ED00583EF8 /* Photo.swift */; };
 		FE19EAC321FD175700583EF8 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EAC221FD175700583EF8 /* NetworkLogger.swift */; };
+		FEA95DF82200E74F00EA3471 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA95DF72200E74F00EA3471 /* LocationDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,8 +42,6 @@
 		FE19EA8D21F8C7B200583EF8 /* VirtualTourist.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VirtualTourist.xcdatamodel; sourceTree = "<group>"; };
 		FE19EA8F21F8C97800583EF8 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FE19EA9421FA1A7200583EF8 /* Location+MKAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+MKAnnotation.swift"; sourceTree = "<group>"; };
-		FE19EA9721FB989300583EF8 /* FlickrClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrClient.swift; sourceTree = "<group>"; };
-		FE19EA9B21FBCCF700583EF8 /* FlickrConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrConvenience.swift; sourceTree = "<group>"; };
 		FE19EAA821FCBA6F00583EF8 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		FE19EAAA21FCBB4B00583EF8 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		FE19EAAC21FCBC0000583EF8 /* HTTPTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPTask.swift; sourceTree = "<group>"; };
@@ -58,6 +55,7 @@
 		FE19EABD21FCFB1F00583EF8 /* FlickrConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrConstants.swift; sourceTree = "<group>"; };
 		FE19EABF21FD01ED00583EF8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		FE19EAC221FD175700583EF8 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		FEA95DF72200E74F00EA3471 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 		FE19EA3D21F660B100583EF8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				FE19EA9621FB964500583EF8 /* Flickr */,
 				FE19EABF21FD01ED00583EF8 /* Photo.swift */,
 			);
 			path = Models;
@@ -114,6 +111,7 @@
 		FE19EA3F21F660BD00583EF8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FEA95DF62200E6F600EA3471 /* LocationDetails */,
 				FE19EA4E21F7D28E00583EF8 /* Map */,
 			);
 			path = Controllers;
@@ -160,15 +158,6 @@
 				FE19EA9421FA1A7200583EF8 /* Location+MKAnnotation.swift */,
 			);
 			path = "Managed Object Extensions";
-			sourceTree = "<group>";
-		};
-		FE19EA9621FB964500583EF8 /* Flickr */ = {
-			isa = PBXGroup;
-			children = (
-				FE19EA9721FB989300583EF8 /* FlickrClient.swift */,
-				FE19EA9B21FBCCF700583EF8 /* FlickrConvenience.swift */,
-			);
-			path = Flickr;
 			sourceTree = "<group>";
 		};
 		FE19EAA321FCB6E900583EF8 /* Networking */ = {
@@ -236,6 +225,14 @@
 				FE19EABA21FCF58200583EF8 /* FlickrApiManager.swift */,
 			);
 			path = Flickr;
+			sourceTree = "<group>";
+		};
+		FEA95DF62200E6F600EA3471 /* LocationDetails */ = {
+			isa = PBXGroup;
+			children = (
+				FEA95DF72200E74F00EA3471 /* LocationDetailsViewController.swift */,
+			);
+			path = LocationDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -309,11 +306,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEA95DF82200E74F00EA3471 /* LocationDetailsViewController.swift in Sources */,
 				FE19EAC321FD175700583EF8 /* NetworkLogger.swift in Sources */,
 				FE19EAC021FD01ED00583EF8 /* Photo.swift in Sources */,
 				FE19EAB321FCCBB800583EF8 /* JSONParameterEncoder.swift in Sources */,
 				FE19EA2E21F65E8900583EF8 /* MapViewController.swift in Sources */,
-				FE19EA9C21FBCCF700583EF8 /* FlickrConvenience.swift in Sources */,
 				FE19EAB721FCDED900583EF8 /* Router.swift in Sources */,
 				FE19EAB921FCF3BC00583EF8 /* FlickrApi.swift in Sources */,
 				FE19EABE21FCFB1F00583EF8 /* FlickrConstants.swift in Sources */,
@@ -328,7 +325,6 @@
 				FE19EA9521FA1A7200583EF8 /* Location+MKAnnotation.swift in Sources */,
 				FE19EAB521FCCCDB00583EF8 /* NetworkRouter.swift in Sources */,
 				FE19EA9021F8C97800583EF8 /* CoreDataStack.swift in Sources */,
-				FE19EA9821FB989300583EF8 /* FlickrClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

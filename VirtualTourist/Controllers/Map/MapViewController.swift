@@ -150,16 +150,11 @@ extension MapViewController: MKMapViewDelegate {
             return
         }
         
-        // TODO: Navigate to image list view
+        // MARK: - Navigate to image list view
         
-        FlickrApiManager.sharedInstance.getPhotos(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude) { (result) in
-            switch result {
-            case .failure(let errorMessage):
-                print(errorMessage)
-            case .success(let photos):
-                print(photos.count)
-            }
-        }
+        let locationDetailsVC = LocationDetailsViewController.instanceFromStoryboard()
+        locationDetailsVC.location = annotation as? Location
+        self.navigationController?.pushViewController(locationDetailsVC, animated: true)
     }
 }
 
