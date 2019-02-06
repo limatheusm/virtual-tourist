@@ -145,6 +145,8 @@ extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         guard let annotation = view.annotation else { return }
         
+        mapView.deselectAnnotation(annotation, animated: true)
+
         if editableMode {
             removeLocation(annotation as! Location)
             return
