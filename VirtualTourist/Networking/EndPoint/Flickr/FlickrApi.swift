@@ -58,7 +58,8 @@ extension FlickrApi: EndPointType {
                     Constants.ParameterKeys.BoundingBox: bboxString(from: latitude, longitude),
                     Constants.ParameterKeys.SafeSearch: Constants.ParameterValues.UseSafeSearch,
                     Constants.ParameterKeys.Extras: Constants.ParameterValues.MediumURL,
-                    Constants.ParameterKeys.NoJSONCallback: Constants.ParameterValues.DisableJSONCallback
+                    Constants.ParameterKeys.NoJSONCallback: Constants.ParameterValues.DisableJSONCallback,
+                    Constants.ParameterKeys.PerPage: Constants.ParameterValues.PerPage
                 ]
                 return .requestParameters(bodyParameters: nil, urlParameters: urlParameters)
         }

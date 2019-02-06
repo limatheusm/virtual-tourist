@@ -13,7 +13,7 @@ final class CoreDataStack {
     
     // Mark: - Singleton
     
-    static let sharedInstance = CoreDataStack()
+    static let sharedInstance = CoreDataStack(modelName: "VirtualTourist")
     
     // Mark: - Properties
     
@@ -21,18 +21,30 @@ final class CoreDataStack {
     var viewContext: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
+    var backgroundContext: NSManagedObjectContext!
     
-    private init() {
-        persistentContainer = NSPersistentContainer(name: "VirtualTourist")
+    private init(modelName: String) {
+        persistentContainer = NSPersistentContainer(name: modelName)
     }
     
     // MARK: - Configuration
+    
+    func configureContexts() {
+        backgroundContext = persistentContainer.newBackgroundContext()
+        
+        viewContext.automaticallyMergesChangesFromParent = true
+        backgroundContext.automaticallyMergesChangesFromParent = true
+        
+        viewContext.mergePolicy = NSMergePolicy.mergeByPropertyStoreTrump
+        backgroundContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+    }
     
     func load(completion: (() -> Void)? = nil) {
         persistentContainer.loadPersistentStores { (storeDescription, error) in
             guard error == nil else {
                 fatalError(error!.localizedDescription)
             }
+            self.configureContexts()
             completion?()
         }
     }
@@ -53,15 +65,31 @@ final class CoreDataStack {
         }
     }
     
+    func saveBackgroundContext(errorHandler: ((_ error: Error?) -> Void)? = nil) {
+        backgroundContext.perform {
+            if self.backgroundContext.hasChanges {
+                do {
+                    try self.backgroundContext.save()
+                    errorHandler?(nil)
+                } catch {
+                    errorHandler?(error)
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
     // MARK: - Perform methods
     
     func performBackgroundTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        persistentContainer.performBackgroundTask(block)
+        backgroundContext.perform {
+            block(self.backgroundContext)
+        }
     }
     
     func performViewTask(_ block: @escaping (NSManagedObjectContext) -> Void) {
-        persistentContainer.viewContext.perform {
-            block(self.persistentContainer.viewContext)
+        viewContext.perform {
+            block(self.viewContext)
         }
     }
 }

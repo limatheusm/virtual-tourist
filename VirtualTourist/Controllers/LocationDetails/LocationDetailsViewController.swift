@@ -8,16 +8,23 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 class LocationDetailsViewController: UIViewController {
     
     // MARK: - Outlets
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
     
     var location: Location?
+    var fetchedResultsController: NSFetchedResultsController<Picture>?
+    var insertedIndexPaths: [IndexPath]!
+    var deletedIndexPaths: [IndexPath]!
     
     // MARK: - View Life-cycle
     
@@ -25,6 +32,17 @@ class LocationDetailsViewController: UIViewController {
         super.viewDidLoad()
         mapView.delegate = self
         setUpLocation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpFetchedResultsController()
+        setUpPictures()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        fetchedResultsController = nil
     }
     
     // MARK: - Class methods
@@ -46,30 +64,61 @@ class LocationDetailsViewController: UIViewController {
         let region = MKCoordinateRegion(center: coordinate, latitudinalMeters: latitudinalMeters, longitudinalMeters: longitudinalMeters)
         self.mapView.setRegion(region, animated: false)
     }
-}
-
-// MARK: MapKit Delegate
-
-extension LocationDetailsViewController: MKMapViewDelegate {
     
-    // MARK: MapKit Delegate
+    fileprivate func setUpPictures() {
+        if fetchedResultsController?.fetchedObjects?.count == 0 {
+            fetchAndStorePhotos()
+        }
+    }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else {
-            return nil
+    fileprivate func setUpFetchedResultsController() {
+        guard let location = location else { return }
+        let pictureFetchRequest: NSFetchRequest<Picture> = Picture.fetchRequest()
+        pictureFetchRequest.predicate = NSPredicate(format: "location == %@", location)
+        
+        let sortDescriptor = NSSortDescriptor(key: "imageURL", ascending: false)
+        pictureFetchRequest.sortDescriptors = [sortDescriptor]
+        
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: pictureFetchRequest, managedObjectContext: CoreDataStack.sharedInstance.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        do {
+            try fetchedResultsController?.performFetch()
+        } catch {
+            fatalError("The fetch could not be performed: \(error.localizedDescription)")
         }
         
-        let reuseId = "PinAnnotation"
-        var pinAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
+        fetchedResultsController?.delegate = self
+    }
+    
+    // MARK: - Fetch and Store methods
+    
+    fileprivate func fetchAndStorePhotos() {
+        activityIndicator.startAnimating()
+        guard let location = location else { return }
         
-        if pinAnnotation == nil {
-            pinAnnotation = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
-            pinAnnotation?.pinTintColor = .blue
-            pinAnnotation?.animatesDrop = true
-        } else {
-            pinAnnotation?.annotation = annotation
+        FlickrApiManager.sharedInstance.getPhotos(latitude: location.latitude, longitude: location.longitude) { (result) in
+            switch result {
+            case .failure(let errorMessage):
+                self.displayError(errorMessage)
+            case .success(let photos):
+                print("size: \(photos.count)")
+                self.storePhotos(photos)
+            }
+            
+            DispatchQueue.main.async {
+                self.activityIndicator.stopAnimating()
+            }
         }
-        
-        return pinAnnotation
+    }
+    
+    fileprivate func storePhotos(_ photos: [Photo]) {
+        // TODO: - Verificar se eh possivel fazer no BG
+        for photo in photos {
+            let picture = Picture(context: CoreDataStack.sharedInstance.viewContext)
+            picture.image = nil
+            picture.imageURL = photo.mediumURL
+            picture.location = self.location
+        }
+        self.saveViewContext()
     }
 }

@@ -29,6 +29,8 @@
 		FE19EAC021FD01ED00583EF8 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EABF21FD01ED00583EF8 /* Photo.swift */; };
 		FE19EAC321FD175700583EF8 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EAC221FD175700583EF8 /* NetworkLogger.swift */; };
 		FEA95DF82200E74F00EA3471 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA95DF72200E74F00EA3471 /* LocationDetailsViewController.swift */; };
+		FEA95E042200FE3600EA3471 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA95E032200FE3600EA3471 /* ImageCell.swift */; };
+		FEC4764222092ED700F60D48 /* LocationDetailsViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC4764122092ED700F60D48 /* LocationDetailsViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		FE19EABF21FD01ED00583EF8 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		FE19EAC221FD175700583EF8 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		FEA95DF72200E74F00EA3471 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
+		FEA95E032200FE3600EA3471 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		FEC4764122092ED700F60D48 /* LocationDetailsViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationDetailsViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,7 @@
 		FE19EA2A21F65E8900583EF8 /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				FEA95E022200FE0A00EA3471 /* Views */,
 				FE19EAA321FCB6E900583EF8 /* Networking */,
 				FE19EA4B21F781B700583EF8 /* Supporting Files */,
 				FE19EA4A21F77A4400583EF8 /* Stores */,
@@ -231,8 +236,17 @@
 			isa = PBXGroup;
 			children = (
 				FEA95DF72200E74F00EA3471 /* LocationDetailsViewController.swift */,
+				FEC4764122092ED700F60D48 /* LocationDetailsViewController+Extension.swift */,
 			);
 			path = LocationDetails;
+			sourceTree = "<group>";
+		};
+		FEA95E022200FE0A00EA3471 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FEA95E032200FE3600EA3471 /* ImageCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +329,7 @@
 				FE19EAB921FCF3BC00583EF8 /* FlickrApi.swift in Sources */,
 				FE19EABE21FCFB1F00583EF8 /* FlickrConstants.swift in Sources */,
 				FE19EAAD21FCBC0000583EF8 /* HTTPTask.swift in Sources */,
+				FEA95E042200FE3600EA3471 /* ImageCell.swift in Sources */,
 				FE19EAA921FCBA6F00583EF8 /* EndPointType.swift in Sources */,
 				FE19EA2C21F65E8900583EF8 /* AppDelegate.swift in Sources */,
 				FE19EAB121FCC6A100583EF8 /* URLParameterEncoder.swift in Sources */,
@@ -325,6 +340,7 @@
 				FE19EA9521FA1A7200583EF8 /* Location+MKAnnotation.swift in Sources */,
 				FE19EAB521FCCCDB00583EF8 /* NetworkRouter.swift in Sources */,
 				FE19EA9021F8C97800583EF8 /* CoreDataStack.swift in Sources */,
+				FEC4764222092ED700F60D48 /* LocationDetailsViewController+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
