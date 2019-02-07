@@ -12,6 +12,12 @@ class ImageCell: UICollectionViewCell {
     @IBOutlet weak var uiImage: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    override var isSelected: Bool {
+        didSet {
+            self.layer.opacity = isSelected ? 0.5 : 1
+        }
+    }
+    
     static let identifier = "imageCellId"
     var imageURL = ""
 }

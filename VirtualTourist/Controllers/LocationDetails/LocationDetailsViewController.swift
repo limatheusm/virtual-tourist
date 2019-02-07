@@ -18,6 +18,7 @@ class LocationDetailsViewController: UIViewController {
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var newCollectionButton: UIButton!
     
     // MARK: - Properties
     
@@ -25,12 +26,14 @@ class LocationDetailsViewController: UIViewController {
     var fetchedResultsController: NSFetchedResultsController<Picture>?
     var insertedIndexPaths: [IndexPath]!
     var deletedIndexPaths: [IndexPath]!
+    var editable = false
     
     // MARK: - View Life-cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
+        collectionView.allowsMultipleSelection = true
         setUpLocation()
     }
     
@@ -90,10 +93,25 @@ class LocationDetailsViewController: UIViewController {
         fetchedResultsController?.delegate = self
     }
     
-    // MARK: - Fetch and Store methods
+    // MARK: - Actions
+    
+    @IBAction func newCollectionTapped(_ sender: Any) {
+        if editable {
+            // Remove selected Pictures
+            if let selectedIndexPathsPictures = collectionView.indexPathsForSelectedItems {
+                deletePictures(from: selectedIndexPathsPictures)
+                setUIEditableMode(false)
+            }
+        } else {
+            // New Collection
+            fetchNewCollection()
+        }
+    }
+    
+    // MARK: - Fetch, Store and Delete methods
     
     fileprivate func fetchAndStorePhotos() {
-        activityIndicator.startAnimating()
+        setUILoading(true)
         guard let location = location else { return }
         
         FlickrApiManager.sharedInstance.getPhotos(latitude: location.latitude, longitude: location.longitude) { (result) in
@@ -106,19 +124,46 @@ class LocationDetailsViewController: UIViewController {
             }
             
             DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
+                self.setUILoading(false)
             }
         }
     }
     
     fileprivate func storePhotos(_ photos: [Photo]) {
-        // TODO: - Verificar se eh possivel fazer no BG
         for photo in photos {
             let picture = Picture(context: CoreDataStack.sharedInstance.viewContext)
             picture.image = nil
             picture.imageURL = photo.mediumURL
             picture.location = self.location
         }
-        self.saveViewContext()
+        saveViewContext()
+    }
+    
+    fileprivate func deletePictures(from indexPaths: [IndexPath]) {
+        guard let fRC = fetchedResultsController else { return }
+        for selectedIndexPath in indexPaths {
+            let picToDelete = fRC.object(at: selectedIndexPath)
+            CoreDataStack.sharedInstance.performViewTask { (viewContext) in
+                viewContext.delete(picToDelete)
+            }
+        }
+        saveViewContext()
+    }
+    
+    fileprivate func deletePictures(_ pictures: [Picture]) {
+        for picture in pictures {
+            CoreDataStack.sharedInstance.performViewTask { (viewContext) in
+                viewContext.delete(picture)
+            }
+        }
+        saveViewContext()
+    }
+    
+    fileprivate func fetchNewCollection() {
+        guard let location = location else { return }
+        guard let pictures = location.pictures else { return }
+        setUILoading(true)
+        deletePictures(pictures.allObjects as! [Picture])
+        fetchAndStorePhotos()
     }
 }

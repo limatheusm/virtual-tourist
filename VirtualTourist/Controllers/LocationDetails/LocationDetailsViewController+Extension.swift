@@ -21,6 +21,7 @@ extension LocationDetailsViewController: UICollectionViewDataSource {
         return fetchedResultsController?.sections?.count ?? 1
     }
     
+    /* cellForItemAt */
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let imageCell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageCell.identifier, for: indexPath) as! ImageCell
         
@@ -37,6 +38,7 @@ extension LocationDetailsViewController: UICollectionViewDataSource {
         return imageCell
     }
     
+    /* willDisplay */
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let picture = fetchedResultsController?.object(at: indexPath) else { return }
         guard let imageCell = cell as? ImageCell else { return }
@@ -70,6 +72,18 @@ extension LocationDetailsViewController: UICollectionViewDataSource {
             }
         }
     }
+    
+    /* didSelectItemAt */
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        setUIEditableMode(true)
+    }
+    
+    /* didDeselect */
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        if let selectedItems = collectionView.indexPathsForSelectedItems {
+            setUIEditableMode(!selectedItems.isEmpty)
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -83,7 +97,7 @@ extension LocationDetailsViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 8
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -186,6 +200,25 @@ extension LocationDetailsViewController {
                 completion(nil, "Image does not exist at \(String(describing: imageURL))")
                 return
             }
+        }
+    }
+    
+    func setUIEnable(_ enable: Bool) {
+        newCollectionButton.isEnabled = enable
+    }
+    
+    func setUIEditableMode(_ editable: Bool) {
+        self.editable = editable
+        newCollectionButton.setTitle(editable ? "Remove Selected Pictures" : "New Collection", for: .normal)
+    }
+    
+    func setUILoading(_ isLoading: Bool) {
+        setUIEnable(!isLoading)
+        collectionView.layer.isHidden = isLoading
+        if isLoading {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
         }
     }
 }

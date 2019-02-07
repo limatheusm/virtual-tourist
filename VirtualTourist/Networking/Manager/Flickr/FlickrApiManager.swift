@@ -64,8 +64,11 @@ final class FlickrApiManager {
                         completion(.failure(NetworkResponse.okStatusNotFound.rawValue))
                         return
                     }
+                    /* Generate random photos */
+                    let photos = apiResponse.photosResponse.photos
+                    let arrayOfRandomNumbers = self.generateRandomNumbers(max: photos.count, quantity: FlickrApi.Constants.numberOfPictures)
                     
-                    completion(.success(apiResponse.photosResponse.photos))
+                    completion(.success(self.generateRandomPhotos(photos, from: arrayOfRandomNumbers)))
                     
                 } catch {
                     completion(.failure(NetworkResponse.unableToDecode.rawValue))
@@ -91,5 +94,24 @@ extension FlickrApiManager {
         case 600: return .failure(NetworkResponse.outdated.rawValue)
         default: return .failure(NetworkResponse.failed.rawValue)
         }
+    }
+    
+    fileprivate func generateRandomNumbers(min: Int = 0, max: Int, quantity: Int) -> [Int] {
+        var numbers = [Int]()
+        while numbers.count < quantity {
+            let randomNumber = Int.random(in: min..<max)
+            if !numbers.contains(randomNumber) {
+                numbers.append(randomNumber)
+            }
+        }
+        return numbers
+    }
+    
+    fileprivate func generateRandomPhotos(_ photos: [Photo], from randomNumbers: [Int]) -> [Photo] {
+        var randomPhotos = [Photo]()
+        for randomNumber in randomNumbers {
+            randomPhotos.append(photos[randomNumber])
+        }
+        return randomPhotos
     }
 }

@@ -12,18 +12,18 @@ import CoreData
 
 class MapViewController: UIViewController {
 
-    // MARK: Outlets
+    // MARK: - Outlets
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var mapView: MKMapView!
     
-    // MARK: Properties
+    // MARK: - Properties
     
     var editableMode = false
     var longGesture: UILongPressGestureRecognizer!
     var fetchedResultsController: NSFetchedResultsController<Location>?
     
-    // MARK: View Lifecycle
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class MapViewController: UIViewController {
         fetchedResultsController = nil
     }
     
-    // MARK: SetUp functions
+    // MARK: - SetUp functions
     
     fileprivate func setUpFetchedResultsController() {
         /* Create a fetch request for Location */
@@ -75,7 +75,7 @@ class MapViewController: UIViewController {
         mapView.addGestureRecognizer(longGesture)
     }
     
-    // MARK: User Interaction
+    // MARK: - User Interaction
     
     @objc func longPressAction(gestureRecognizer: UIGestureRecognizer) {
         if gestureRecognizer.state == UIGestureRecognizer.State.began {
@@ -86,7 +86,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    // MARK: Actions
+    // MARK: - Actions
     
     @IBAction func editTapped(_ sender: Any) {
         let initialPosition = CGAffineTransform(translationX: 0, y: 0)
@@ -99,7 +99,7 @@ class MapViewController: UIViewController {
         }
     }
     
-    // MARK: Location functions
+    // MARK: - Location functions
     
     func addLocation(from coordinate: CLLocationCoordinate2D) {
         /* Create Managed Object */
@@ -117,11 +117,11 @@ class MapViewController: UIViewController {
     }
 }
 
-// MARK: MapKit Delegate
+// MARK: - MapKit Delegate
 
 extension MapViewController: MKMapViewDelegate {
     
-    // MARK: MapKit Delegate
+    // MARK: - MapKit Delegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else {
@@ -160,7 +160,7 @@ extension MapViewController: MKMapViewDelegate {
     }
 }
 
-// MARK: Fetched Results Controller Delegate
+// MARK: - Fetched Results Controller Delegate
 
 extension MapViewController: NSFetchedResultsControllerDelegate {
     
@@ -181,7 +181,7 @@ extension MapViewController: NSFetchedResultsControllerDelegate {
     }
 }
 
-// MARK: Helpers
+// MARK: - Helpers
 
 extension MapViewController {
     func setUIEditable(_ editable: Bool) {
@@ -197,7 +197,7 @@ extension MapViewController {
     }
     
     func displayError(_ error: String) {
-        // TODO: Show error to user
+        // TODO: - Show error to user
         print(error)
     }
     
