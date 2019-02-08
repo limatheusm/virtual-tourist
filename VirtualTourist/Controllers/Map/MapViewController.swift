@@ -196,11 +196,6 @@ extension MapViewController {
         }
     }
     
-    func displayError(_ error: String) {
-        // TODO: - Show error to user
-        print(error)
-    }
-    
     fileprivate func saveViewContext() {
         CoreDataStack.sharedInstance.saveViewContext { (error) in
             guard error == nil else {

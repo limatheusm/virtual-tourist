@@ -119,7 +119,6 @@ class LocationDetailsViewController: UIViewController {
             case .failure(let errorMessage):
                 self.displayError(errorMessage)
             case .success(let photos):
-                print("size: \(photos.count)")
                 self.storePhotos(photos)
             }
             

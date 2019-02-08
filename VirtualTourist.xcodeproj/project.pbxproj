@@ -30,6 +30,7 @@
 		FE19EAC321FD175700583EF8 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE19EAC221FD175700583EF8 /* NetworkLogger.swift */; };
 		FEA95DF82200E74F00EA3471 /* LocationDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA95DF72200E74F00EA3471 /* LocationDetailsViewController.swift */; };
 		FEA95E042200FE3600EA3471 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA95E032200FE3600EA3471 /* ImageCell.swift */; };
+		FEBD680F220D156700BD18AA /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD680E220D156700BD18AA /* UIViewController+Extension.swift */; };
 		FEC4764222092ED700F60D48 /* LocationDetailsViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC4764122092ED700F60D48 /* LocationDetailsViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		FE19EAC221FD175700583EF8 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		FEA95DF72200E74F00EA3471 /* LocationDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailsViewController.swift; sourceTree = "<group>"; };
 		FEA95E032200FE3600EA3471 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
+		FEBD680E220D156700BD18AA /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		FEC4764122092ED700F60D48 /* LocationDetailsViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocationDetailsViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 		FE19EA2A21F65E8900583EF8 /* VirtualTourist */ = {
 			isa = PBXGroup;
 			children = (
+				FEBD680D220D154200BD18AA /* Extensions */,
 				FEA95E022200FE0A00EA3471 /* Views */,
 				FE19EAA321FCB6E900583EF8 /* Networking */,
 				FE19EA4B21F781B700583EF8 /* Supporting Files */,
@@ -249,6 +252,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		FEBD680D220D154200BD18AA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FEBD680E220D156700BD18AA /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,6 +343,7 @@
 				FEA95E042200FE3600EA3471 /* ImageCell.swift in Sources */,
 				FE19EAA921FCBA6F00583EF8 /* EndPointType.swift in Sources */,
 				FE19EA2C21F65E8900583EF8 /* AppDelegate.swift in Sources */,
+				FEBD680F220D156700BD18AA /* UIViewController+Extension.swift in Sources */,
 				FE19EAB121FCC6A100583EF8 /* URLParameterEncoder.swift in Sources */,
 				FE19EABB21FCF58200583EF8 /* FlickrApiManager.swift in Sources */,
 				FE19EA8E21F8C7B200583EF8 /* VirtualTourist.xcdatamodeld in Sources */,
