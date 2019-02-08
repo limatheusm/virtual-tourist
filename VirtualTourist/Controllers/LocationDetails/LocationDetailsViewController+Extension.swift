@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 import CoreData
-var count = 0
+
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension LocationDetailsViewController: UICollectionViewDataSource {
@@ -90,7 +90,7 @@ extension LocationDetailsViewController: UICollectionViewDataSource {
 
 extension LocationDetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let padding: CGFloat = 16
+        let padding: CGFloat = 8
         let collectionViewSize = collectionView.frame.size.width - padding
         
         return CGSize(width: collectionViewSize / 3, height: collectionViewSize / 3)
@@ -172,11 +172,6 @@ extension LocationDetailsViewController: NSFetchedResultsControllerDelegate {
 // MARK: - Helpers
 
 extension LocationDetailsViewController {
-    func displayError(_ error: String) {
-        // TODO: Show error to user
-        print(error)
-    }
-    
     internal func saveViewContext() {
         CoreDataStack.sharedInstance.saveViewContext { (error) in
             guard error == nil else {
