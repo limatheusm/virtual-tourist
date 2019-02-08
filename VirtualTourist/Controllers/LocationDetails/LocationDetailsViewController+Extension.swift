@@ -43,8 +43,8 @@ extension LocationDetailsViewController: UICollectionViewDataSource {
         guard let picture = fetchedResultsController?.object(at: indexPath) else { return }
         guard let imageCell = cell as? ImageCell else { return }
         
-        if let uiImage = picture.image {
-            imageCell.uiImage.image = uiImage
+        if let image = picture.image {
+            imageCell.uiImage.image = UIImage(data: image)
             imageCell.activityIndicator.stopAnimating()
         } else {
             self.downloadImage(from: imageCell.imageURL) { (imageData, errorString) in
@@ -57,15 +57,14 @@ extension LocationDetailsViewController: UICollectionViewDataSource {
                 }
                 
                 /* Create UIImage and set */
-                let uiImageFromData = UIImage(data: imageData)
                 DispatchQueue.main.async {
                     /* Configure Cell */
-                    imageCell.uiImage.image = uiImageFromData
+                    imageCell.uiImage.image = UIImage(data: imageData)
                     imageCell.activityIndicator.stopAnimating()
                     /* Save UIImage in bgContext */
                     CoreDataStack.sharedInstance.performBackgroundTask({ (bgContext) in
                         let bgPicture = bgContext.object(with: picture.objectID) as! Picture
-                        bgPicture.image = uiImageFromData
+                        bgPicture.image = imageData
                         try? bgContext.save()
                     })
                 }

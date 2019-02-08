@@ -37,16 +37,23 @@ final class FlickrApiManager {
     
     // MARK: - Convenience methods
     
-    func getPhotos(latitude: Double, longitude: Double, completion: @escaping (_ result: Result<[Photo]>) -> Void) {
-        router.request(.getPhotos(latitude: latitude, longitude: longitude)) { (data, response, error) in
+    func getPhotos(latitude: Double, longitude: Double, pages: Int?, completion: @escaping (_ result: Result<[Photo]>, _ pages: Int?) -> Void) {
+        var randomPage: Int {
+            if let pages = pages {
+                let page = min(pages, 4000 / FlickrApi.Constants.ParameterValues.PerPage)
+                return Int(arc4random_uniform(UInt32(page)) + 1)
+            }
+            return 1
+        }
+        router.request(.getPhotos(latitude: latitude, longitude: longitude, page: randomPage )) { (data, response, error) in
             guard error == nil else {
                 print(error!.localizedDescription)
-                completion(.failure(NetworkResponse.poorNetworkConnection.rawValue))
+                completion(.failure(NetworkResponse.poorNetworkConnection.rawValue), nil)
                 return
             }
             
             guard let response = response as? HTTPURLResponse else {
-                completion(.failure(NetworkResponse.failed.rawValue))
+                completion(.failure(NetworkResponse.failed.rawValue), nil)
                 return
             }
             
@@ -54,28 +61,24 @@ final class FlickrApiManager {
             switch result {
             case .success:
                 guard let responseData = data else {
-                    completion(.failure(NetworkResponse.noData.rawValue))
+                    completion(.failure(NetworkResponse.noData.rawValue), nil)
                     return
                 }
                 do {
                     let apiResponse = try JSONDecoder().decode(PhotoApiResponse.Container.self, from: responseData)
                     
                     guard apiResponse.stat == FlickrApi.Constants.ResponseValues.OKStatus else {
-                        completion(.failure(NetworkResponse.okStatusNotFound.rawValue))
+                        completion(.failure(NetworkResponse.okStatusNotFound.rawValue), nil)
                         return
                     }
-                    /* Generate random photos */
-                    let photos = apiResponse.photosResponse.photos
-                    let arrayOfRandomNumbers = self.generateRandomNumbers(max: photos.count, quantity: FlickrApi.Constants.numberOfPictures)
-                    
-                    completion(.success(self.generateRandomPhotos(photos, from: arrayOfRandomNumbers)))
-                    
+
+                    completion(.success(apiResponse.photosResponse.photos), apiResponse.photosResponse.pages)
                 } catch {
-                    completion(.failure(NetworkResponse.unableToDecode.rawValue))
+                    completion(.failure(NetworkResponse.unableToDecode.rawValue), nil)
                 }
                 
             case .failure(let networkFailureError):
-                completion(.failure(networkFailureError))
+                completion(.failure(networkFailureError), nil)
             }
             
         }

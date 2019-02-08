@@ -15,7 +15,7 @@ enum NetworkEnvironment {
 }
 
 public enum FlickrApi {
-    case getPhotos(latitude: Double, longitude: Double)
+    case getPhotos(latitude: Double, longitude: Double, page: Int)
 }
 
 // MARK: - EndPointType Protocol
@@ -50,7 +50,7 @@ extension FlickrApi: EndPointType {
     
     var task: HTTPTask {
         switch self {
-            case .getPhotos(let latitude, let longitude):
+            case .getPhotos(let latitude, let longitude, let page):
                 let urlParameters: Parameters = [
                     Constants.ParameterKeys.Method: Constants.ParameterValues.SearchMethod,
                     Constants.ParameterKeys.APIKey: Constants.ParameterValues.APIKey,
@@ -58,8 +58,9 @@ extension FlickrApi: EndPointType {
                     Constants.ParameterKeys.BoundingBox: bboxString(from: latitude, longitude),
                     Constants.ParameterKeys.SafeSearch: Constants.ParameterValues.UseSafeSearch,
                     Constants.ParameterKeys.Extras: Constants.ParameterValues.MediumURL,
-                    Constants.ParameterKeys.NoJSONCallback: Constants.ParameterValues.DisableJSONCallback
-//                    Constants.ParameterKeys.PerPage: Constants.ParameterValues.PerPage
+                    Constants.ParameterKeys.NoJSONCallback: Constants.ParameterValues.DisableJSONCallback,
+                    Constants.ParameterKeys.PerPage: Constants.ParameterValues.PerPage,
+                    Constants.ParameterKeys.Page: page
                 ]
                 return .requestParameters(bodyParameters: nil, urlParameters: urlParameters)
         }

@@ -27,6 +27,7 @@ class LocationDetailsViewController: UIViewController {
     var insertedIndexPaths: [IndexPath]!
     var deletedIndexPaths: [IndexPath]!
     var editable = false
+    var pages: Int? = nil
     
     // MARK: - View Life-cycle
     
@@ -114,11 +115,12 @@ class LocationDetailsViewController: UIViewController {
         setUILoading(true)
         guard let location = location else { return }
         
-        FlickrApiManager.sharedInstance.getPhotos(latitude: location.latitude, longitude: location.longitude) { (result) in
+        FlickrApiManager.sharedInstance.getPhotos(latitude: location.latitude, longitude: location.longitude, pages: pages) { (result, pages) in
             switch result {
             case .failure(let errorMessage):
                 self.displayError(errorMessage)
             case .success(let photos):
+                self.pages = pages
                 self.storePhotos(photos)
             }
             

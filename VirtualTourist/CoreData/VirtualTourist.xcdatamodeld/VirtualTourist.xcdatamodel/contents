@@ -6,12 +6,12 @@
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Picture" inverseName="location" inverseEntity="Picture" syncable="YES"/>
     </entity>
     <entity name="Picture" representedClassName="Picture" syncable="YES" codeGenerationType="class">
-        <attribute name="image" optional="YES" attributeType="Transformable" customClassName="UIKit.UIImage" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" customClassName="UIKit.UIImage" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="pictures" inverseEntity="Location" syncable="YES"/>
     </entity>
     <elements>
         <element name="Location" positionX="3561.75390625" positionY="866.5" width="128" height="88"/>
-        <element name="Picture" positionX="3798.640625" positionY="881.54296875" width="128" height="88"/>
+        <element name="Picture" positionX="3798.640625" positionY="881.54296875" width="128" height="90"/>
     </elements>
 </model>

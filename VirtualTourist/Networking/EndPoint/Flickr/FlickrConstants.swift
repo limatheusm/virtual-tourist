@@ -51,7 +51,7 @@ extension FlickrApi {
             static let GalleryID = "5704-72157622566655097"
             static let MediumURL = "url_m"
             static let UseSafeSearch = "1"
-            static let PerPage = "21"
+            static let PerPage = 21
         }
         
         // MARK: - Response Keys
