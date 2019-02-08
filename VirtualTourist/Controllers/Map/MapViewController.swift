@@ -186,14 +186,8 @@ extension MapViewController: NSFetchedResultsControllerDelegate {
 extension MapViewController {
     func setUIEditable(_ editable: Bool) {
         editableMode = editable
-
-        if editableMode {
-            editButton.title = "Done"
-            editButton.style = .done
-        } else {
-            editButton.title = "Edit"
-            editButton.style = .plain
-        }
+        editButton.title = editableMode ? "Done" : "Edit"
+        editButton.style = editableMode ? .done : .plain
     }
     
     fileprivate func saveViewContext() {
